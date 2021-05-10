@@ -1,0 +1,259 @@
+.app__header{
+    padding: 0 5%;
+    margin: 10px 0 0;
+    position: relative;
+    .app__nav{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 15px 0;
+        .nav__logo{
+            width: 50px;
+            height: 50px;
+            img{
+                width: 100%;
+                height: 100%;
+            }
+        }
+        .nav__menu{
+            display: flex;
+            writing-mode: horizontal-tb;
+            list-style: none;
+            .nav__menu-item{
+                display: block;
+                position: relative;
+                a{
+                    text-decoration: none;
+                    color: $primary;
+                    font-weight: 500;
+                    font-size: 1.2rem;
+                    display: block;
+                    margin: 7px 3px;
+                    padding: 7px 10px;
+                    transition: .4s;
+                }
+                & a:hover, &.active a{
+                    background: $primary-dark;
+                    color: $light;
+                    border-radius: 30px;
+                }
+            }
+        }
+        .nav__menu .nav__menu-item:hover .nav__submenu{
+            transform: scale(1);
+            opacity: 1;
+        }
+        .nav__submenu{
+            position: absolute;
+            top: 100%;
+            left:0;
+            transform: scale(0);
+            opacity: 0;
+            padding: 10px;
+            background: $white;
+            transition: .4s;
+            transform-origin: top;
+            box-shadow: 3px 3px 10px 2px $accent-dark;
+            &::before{
+                content: '';
+                position: absolute;
+                width: 20px;
+                height: 20px;
+                top: -10px;
+                left: 20px;
+                background: $white;
+                transform: rotate(45deg);
+            }
+            .nav__submenu-item{
+                list-style: none;
+                a{
+                    white-space: nowrap;
+                    text-overflow: ellipsis;
+                    overflow: hidden;
+                }
+            }
+        }
+        .search__root{
+            display: flex;
+            .search_input{
+                border: 1px solid $primary-dark;
+                padding: 5px 10px;
+                font-family: 'PT Sans', sans-serif;
+                border-radius: 20px;
+                outline: none;
+                font-size: 1.2rem;
+                font-weight: 500;
+            }
+        }
+        .drawer_btn{
+            display: none;
+            i{
+                width: 50px;
+                height: 50px;
+            }
+        }
+    }
+}
+.drawer__overlay{
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+    display: none;
+    background: rgba(0, 0, 0, 0.15);
+    &.show{
+        display: block;
+    }
+}
+.drawer__root{
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 100vh;
+    width: 230px;
+    background: $white;
+    color: $primary;
+    font-weight: 500;
+    font-size: 1.2rem;
+    box-shadow: 0 0 20px 4px rgba(0, 0, 0, 0.15);
+    transition: .4s;
+    transform: translateX(100%);
+    overflow-y: auto;
+    .drawer-close{
+        position: absolute;
+        top: 0;
+        right: 0;
+        margin: 8px;
+    }
+    .nav__logo{
+        width: 50px;
+        height: 50px;
+        img{
+            width: 100%;
+            height: 100%;
+        }
+    }
+    .drawer__menu{
+        padding: 10px 0;
+        position: relative;
+        .drawer__menu-item{
+            list-style: none;
+            a{
+                display: block;
+                text-decoration: none;
+                padding: 8px 12px;
+                font-size: 1.2rem;
+                color: $primary;
+                font-weight: 500;
+                transition: .4s;
+                width: 100%;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+            }
+            & a:hover, &.active a{
+                background: $primary-dark;
+                color: $light;
+            }
+        }
+    }
+    .drawer__submenu{
+        display: none;
+        background: $accent-light;
+        .drawer__submenu-item a{
+            padding-left: 30px;
+        }
+    }
+    &.show{
+        transform: translateX(0);
+    }
+}
+
+// Table.
+@media (max-width:1200px){
+    .app__header{
+        .app__nav{
+            justify-content: space-between;
+            //.nav__menu{
+            //    display: none;
+            //}
+            .search__root{
+                position: relative;
+                .search_input {
+                    position: absolute;
+                    right: 40px;
+                    top: 0;
+                    width: 0;
+                    padding: 0;
+                    border: 0;
+                    transition: .5s;
+                }
+                &.active .search_input{
+                    border: 1px solid $primary-dark;
+                    padding: 5px 10px;
+                    width: auto;
+                }
+                &.active .search_input{
+                    border: 1px solid $primary-dark;
+                    padding: 5px 10px;
+                    width: auto;
+                }
+            }
+        }
+    }
+}
+@media (max-width: 910px){
+    .app__header{
+        .app__nav{
+            justify-content: space-between;
+            .nav__menu{
+                display: none;
+            }
+            .search__root{
+                display: flex;
+                .search_input{
+                    border: 1px solid $primary-dark;
+                    padding: 5px 10px;
+                    font-family: 'PT Sans', sans-serif;
+                    border-radius: 20px;
+                    outline: none;
+                    width: auto;
+                    font-size: 1.2rem;
+                    font-weight: 500;
+                }
+            }
+            .drawer_btn{
+                display: flex;
+            }
+        }
+    }
+}
+@media (max-width:500px){;
+    .app__header{
+        .app__nav{
+            .search__root{
+                position: relative;
+                .search_input {
+                    position: absolute;
+                    right: 40px;
+                    top: 0;
+                    width: 0;
+                    padding: 0;
+                    border: 0;
+                    transition: .5s;
+                }
+                &.active .search_input{
+                    border: 1px solid $primary-dark;
+                    padding: 5px 10px;
+                    width: auto;
+                }
+                &.active .search_input{
+                    border: 1px solid $primary-dark;
+                    padding: 5px 10px;
+                    width: auto;
+                }
+            }
+        }
+    }
+}

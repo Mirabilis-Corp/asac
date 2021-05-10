@@ -1,0 +1,145 @@
+*{
+    margin: 0;
+    padding:0;
+    box-sizing: border-box;
+    font-family: 'PT Sans', sans-serif;
+}
+.app__root{
+    height: 100vh;
+    width: 100vw;
+    overflow-x: hidden;
+    overflow-y: auto;
+    background: $light;
+    position: relative;
+}
+i{
+    display: block;
+    width: 40px;
+    height: 40px;
+}
+.btn{
+    display: block;
+    border: none;
+    outline: none;
+    padding: 7px 13px;
+    font-size: 1.3rem;
+    font-weight: 450;
+    color: $primary-dark;
+    cursor: pointer;
+    transition: .3s;
+    &.btn-icon{
+        width: 35px;
+        height: 35px;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    &.btn-light {
+        background: $light;
+        color: $primary-dark;
+        &:hover{
+            background: $accent-light-200;
+        }
+    }
+    &.btn-primary {
+        background: $primary-dark;
+        color: $light;
+        &:hover{
+            color: $accent-light;
+        }
+    }
+}
+// ** PADDING ** //
+$paddings: '', 'b', 't', 'l', 'r', 'x', 'y';
+@each $padding in $paddings {
+    $p_type: '';
+    @if $padding == 'b'{
+        $p_type: '-bottom';
+    }@else if $padding == 't'{
+        $p_type: '-top';
+    }@else if $padding == 'l'{
+        $p_type: '-left';
+    }@else if $padding == 'r'{
+        $p_type: '-right';
+    }
+    @for $i from 0 through 50 {
+        .p#{$padding}-#{$i} {
+            @if $padding == 'x' {
+                @if $i == 0 {
+                    padding-left: 0 !important;
+                    padding-right: 0 !important;
+                }@else{
+                    padding-left: $i + px !important;
+                    padding-right: $i + px !important;
+                }
+            }@else if $padding == 'y'{
+                @if $i == 0 {
+                    padding-top: 0 !important;
+                    padding-bottom: 0 !important;
+                }@else{
+                    padding-top: $i + px !important;
+                    padding-bottom: $i + px !important;
+                }
+            }
+            @else{
+                @if $i == 0 {
+                    padding#{$p_type}: 0 !important;
+                }@else{
+                    padding#{$p_type}: $i + px !important;
+                }
+            }
+        }
+    }
+}
+// ** MARGIN ** //
+$margins: '', 'b', 't', 'l', 'r', 'x', 'y';
+@each $margin in $margins {
+    $m_type: '';
+    @if $margin == 'b'{
+        $m_type: '-bottom';
+    }@else if $margin == 't'{
+        $m_type: '-top';
+    }@else if $margin == 'l'{
+        $m_type: '-left';
+    }@else if $margin == 'r'{
+        $m_type: '-right';
+    }
+    @for $i from 0 through 50 {
+        .m#{$margin}-#{$i} {
+            @if $margin == 'x' {
+                @if $i == 0 {
+                    margin-left: 0 !important;
+                    margin-right: 0 !important;
+                }@else{
+                    margin-left: $i + px !important;
+                    margin-right: $i + px !important;
+                }
+            }@else if $margin == 'y'{
+                @if $i == 0 {
+                    margin-top: 0 !important;
+                    margin-bottom: 0 !important;
+                }@else{
+                    margin-top: $i + px !important;
+                    margin-bottom: $i + px !important;
+                }
+            }
+            @else{
+                @if $i == 0 {
+                    margin#{$m_type}: 0 !important;
+                }@else{
+                    margin#{$m_type}: $i + px !important;
+                }
+            }
+        }
+    }
+}
+.d-flex{
+    display: flex;
+    &.justify-content-center{
+        justify-content: center;
+    }
+    &.align-items-center{
+        align-items: center;
+    }
+}
